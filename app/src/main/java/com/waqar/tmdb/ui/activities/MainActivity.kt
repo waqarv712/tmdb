@@ -1,7 +1,8 @@
-package com.waqar.tmdb
+package com.waqar.tmdb.ui.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.waqar.tmdb.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
