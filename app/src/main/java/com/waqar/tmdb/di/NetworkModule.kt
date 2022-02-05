@@ -6,6 +6,7 @@ import android.os.Build
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import com.waqar.tmdb.API_KEY
 import com.waqar.tmdb.BuildConfig
 import com.waqar.tmdb.HEADER_CACHE_CONTROL
 import com.waqar.tmdb.HEADER_PRAGMA
@@ -60,7 +61,7 @@ object NetworkModule {
             .connectTimeout(5, TimeUnit.MINUTES)
             .readTimeout(5, TimeUnit.MINUTES)
             .writeTimeout(5, TimeUnit.MINUTES)
-//            .addInterceptor(CommonParamInterceptor(appPreferences))
+            .addInterceptor(CommonParamInterceptor())
             .addInterceptor(provideOfflineCacheInterceptor(context))
             .addInterceptor(UserAgentInterceptor("Tmdb/" + BuildConfig.VERSION_NAME + " (" + BuildConfig.APPLICATION_ID + "; build:" + BuildConfig.VERSION_CODE + "; android " + Build.VERSION.RELEASE + ") " + userAgent))
             .addNetworkInterceptor(provideCacheInterceptor(context))
@@ -74,6 +75,26 @@ object NetworkModule {
         }
 
         return httpClient.build()
+    }
+
+    class CommonParamInterceptor() : Interceptor {
+        override fun intercept(chain: Interceptor.Chain): Response {
+            val originalRequest = chain.request()
+
+            val originalHttpUrl = originalRequest.url
+            val httpUrlBuilder = originalHttpUrl.newBuilder()
+
+            httpUrlBuilder.addQueryParameter(
+                API_KEY,
+                "bb78e4cf3442e302d928f2c5edcdbee1"
+            )
+
+            val newHttpUrl = httpUrlBuilder.build()
+            val requestBuilder = chain.request().newBuilder()
+                .header("Accept", "application/json").url(newHttpUrl)
+            val newRequest = requestBuilder.build()
+            return chain.proceed(newRequest)
+        }
     }
 
     @Provides
