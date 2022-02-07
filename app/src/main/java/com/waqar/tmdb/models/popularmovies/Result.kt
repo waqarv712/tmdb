@@ -1,4 +1,4 @@
-package com.waqar.tmdb.models
+package com.waqar.tmdb.models.popularmovies
 
 
 import com.squareup.moshi.Json
@@ -33,5 +33,7 @@ data class Result(
     @Json(name = "vote_average")
     val voteAverage: Double?,
     @Json(name = "vote_count")
-    val voteCount: Int?
+    val voteCount: Int?,
+    @Transient
+    var isCurrentYear: Boolean = false
 )

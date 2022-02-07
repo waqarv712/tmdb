@@ -11,7 +11,7 @@ import javax.inject.Inject
 
 abstract class BaseFragment<B : ViewBinding> : Fragment() {
 
-    private lateinit var binding: B
+    protected lateinit var binding: B
 
     fun isBindingInitialized() = ::binding.isInitialized
 

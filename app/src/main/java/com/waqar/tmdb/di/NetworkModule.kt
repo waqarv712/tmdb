@@ -30,7 +30,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
 
-    private const val URL = "https://api.themoviedb.org"
+    private const val URL = "https://api.themoviedb.org/3/"
 
     @Provides
     @Singleton

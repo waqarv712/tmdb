@@ -3,5 +3,16 @@
 
     <string name="please_check_your_internet_connection">No internet connection</string>
     <string name="someting_went_wrong">Something went wrong</string>
+    <string name="retry">Retry</string>
+    <string name="internet_not_working">Uh..oh… We\'re unable proceed, its seems like your internet connection is broke or maybe limited. Please check it and try again.</string>
+    <string name="what_are_you_looking_for">What are you looking for?</string>
+    <string name="please_enter_a_movie_nam">Please enter a movie name</string>
+    <string name="overview">Overview</string>
+    <string name="tagLine">Tag line</string>
+    <string name="status">Status</string>
+    <string name="releaseDate">tvReleaseDate</string>
+    <string name="voteAverage">Vote Average</string>
+    <string name="movie_duration">Movie Duration</string>
+    <string name="revenue">Revenue</string>
 
 </resources>

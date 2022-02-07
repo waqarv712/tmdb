@@ -3,7 +3,7 @@ package com.waqar.tmdb.network.responses
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
-import com.waqar.tmdb.models.Result
+import com.waqar.tmdb.models.popularmovies.Result
 
 @JsonClass(generateAdapter = true)
 data class PopularMovies(

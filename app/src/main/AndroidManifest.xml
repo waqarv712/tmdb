@@ -17,6 +17,7 @@
         android:theme="@style/Theme.TMDB">
         <activity
             android:name=".ui.activities.MainActivity"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize|adjustPan"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
