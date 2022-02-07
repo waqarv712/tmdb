@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/searchBar"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/left_round_bg"
+            android:digits="1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM "
+            android:hint="@string/what_are_you_looking_for"
+            android:imeOptions="actionSearch"
+            android:maxLines="1"
+            android:paddingStart="@dimen/_15sdp"
+            android:paddingEnd="@dimen/_10sdp"
+            android:singleLine="true"
+            android:textAlignment="viewStart"
+            android:textSize="@dimen/_10sdp"
+            app:layout_constraintEnd_toStartOf="@+id/searchBtn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/searchBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_30sdp"
+            android:background="@drawable/right_round_bg"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:padding="@dimen/_8sdp"
+            app:layout_constraintBottom_toBottomOf="@+id/searchBar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/searchBar"
+            app:layout_constraintTop_toTopOf="@+id/searchBar">
+
+            <ImageView
+                android:id="@+id/eyeImg"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:src="@drawable/ic_search_grey"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvMovies"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            android:paddingTop="1.5dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/searchBtn"
+            tools:listitem="@layout/movies_list_item" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

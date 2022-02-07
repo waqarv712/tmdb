@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="movie"
+            type="com.waqar.tmdb.network.responses.MovieDetail" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".ui.MovieDetailsActivity">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imgBackdrop"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_200sdp"
+                android:layout_marginBottom="50dp"
+                android:minHeight="260dp"
+                android:scaleType="fitXY"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/ic_launcher_background" />
+
+            <ImageView
+                android:id="@+id/imgPoster"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_120sdp"
+                android:layout_marginStart="12dp"
+                android:scaleType="fitXY"
+                app:layout_constraintBottom_toTopOf="@id/overview"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:src="@drawable/ic_launcher_background" />
+
+            <TextView
+                android:id="@+id/tvMovieName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{movie.originalTitle}"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:minLines="3"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/imgPoster"
+                app:layout_constraintTop_toTopOf="@id/imgPoster"
+                tools:text="movie Name" />
+
+            <TextView
+                android:id="@+id/overview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:paddingTop="12dp"
+                android:text="@string/overview"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/imgPoster"
+                app:layout_constraintTop_toBottomOf="@id/imgBackdrop" />
+
+            <TextView
+                android:id="@+id/tvOverviewDetail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{movie.overview}"
+                android:layout_marginTop="10dp"
+                android:minLines="5"
+                android:textColor="@android:color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/imgPoster"
+                app:layout_constraintTop_toBottomOf="@id/overview"
+                tools:text="overview Details" />
+
+            <TextView
+                android:id="@+id/tvDuration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:text="@string/movie_duration"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/imgPoster"
+                app:layout_constraintTop_toBottomOf="@id/tvOverviewDetail" />
+
+            <TextView
+                android:id="@+id/tvMovieDuration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{Integer.toString(movie.runtime)}"
+                android:layout_marginTop="10dp"
+                android:textColor="@android:color/black"
+                app:layout_constraintStart_toStartOf="@id/imgPoster"
+                app:layout_constraintTop_toBottomOf="@id/tvDuration"
+                tools:text="Duration" />
+
+            <TextView
+                android:id="@+id/tvRevenue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:text="@string/revenue"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/imgPoster"
+                app:layout_constraintTop_toBottomOf="@id/tvMovieDuration" />
+
+            <TextView
+                android:id="@+id/tvRevenueDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text='@{movie.revenue != null ? Integer.toString(movie.revenue) : "None"}'
+                android:layout_marginTop="10dp"
+                android:textColor="@android:color/black"
+                app:layout_constraintStart_toStartOf="@id/imgPoster"
+                app:layout_constraintTop_toBottomOf="@id/tvRevenue"
+                tools:text="Revenue" />
+
+            <TextView
+                android:id="@+id/tvReleaseDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:text="@string/releaseDate"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/imgPoster"
+                app:layout_constraintTop_toBottomOf="@id/tvRevenueDetail" />
+
+            <TextView
+                android:id="@+id/tvReleaseDateDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{movie.releaseDate}"
+                android:layout_marginTop="10dp"
+                android:textColor="@android:color/black"
+                app:layout_constraintStart_toStartOf="@id/imgPoster"
+                app:layout_constraintTop_toBottomOf="@id/tvReleaseDate"
+                tools:text="release date" />
+
+            <TextView
+                android:id="@+id/tvVoteAverage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:text="@string/voteAverage"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/imgPoster"
+                app:layout_constraintTop_toBottomOf="@id/tvReleaseDateDetails" />
+
+            <TextView
+                android:id="@+id/tvVoteAverageDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{Double.toString(movie.voteAverage)}"
+                android:layout_marginTop="10dp"
+                android:paddingBottom="10dp"
+                android:textColor="@android:color/black"
+                app:layout_constraintStart_toStartOf="@id/imgPoster"
+                app:layout_constraintTop_toBottomOf="@id/tvVoteAverage"
+                tools:text="7.1" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

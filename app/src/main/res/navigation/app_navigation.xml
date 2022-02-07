@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_navigation"
+    app:startDestination="@id/homeFragment"
+    >
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.waqar.tmdb.ui.fragments.HomeFragment"
+        android:label="home_fragment"
+        tools:layout="@layout/home_fragment">
+
+        <action android:id="@+id/action_homeFragment_to_detailFragment"
+            app:destination="@id/detailFragment">
+
+           <argument android:name="movieID"
+               app:argType="integer" />
+
+        </action>
+
+    </fragment>
+
+    <fragment android:id="@+id/detailFragment"
+        android:name="com.waqar.tmdb.ui.fragments.DetailFragment"
+        android:label="detailFragment"
+        tools:layout="@layout/detail_fragment">
+
+        <action android:id="@+id/action_detailFragment_to_homeFragment3"
+            app:popUpTo="@id/homeFragment"
+            />
+
+    </fragment>
+
+</navigation>
